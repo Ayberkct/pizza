@@ -1,0 +1,16 @@
+.header-container {
+  position: absolute;
+  width: 100%;
+  height: 138px;
+  background: red;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-baslik {
+  color: white;
+  font-weight: bold;
+}
