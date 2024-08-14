@@ -1,12 +1,33 @@
+/* Container için üst margin */
 .food-size-container {
   margin-top: 7rem;
-
   display: flex;
-  flex-direction: row;
-  justify-content: center;
+  flex-direction: column; /* İçerikleri dikeyde yerleştirmek için */
   align-items: center;
 }
 
+/* Boyut ve hamur seçimleri için Flexbox düzeni */
+.size-dough-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; /* Tam genişlik */
+  max-width: 532px; /* Maksimum genişlik */
+  margin-bottom: 1rem; /* Checkbox formunun altına yerleştirmek için boşluk */
+}
+
+/* Boyut ve hamur seçimleri için her bir div */
+.size-selection,
+.dough-selection {
+  flex: 1;
+  margin-right: 1rem;
+}
+
+/* Son div'te sağda boşluk oluşmaması için */
+.size-selection {
+  margin-right: 0;
+}
+
+/* Form ve checkbox aralarındaki boşluklar */
 .food-size {
   display: flex;
   gap: 1rem;
@@ -17,8 +38,8 @@ input[type="radio"] {
   display: none;
 }
 
-/* Label görünümü */
-label {
+/* Radio button label görünümü */
+.radio {
   display: inline-block;
   width: 30px;
   height: 30px;
@@ -33,7 +54,85 @@ label {
 }
 
 /* Radio button seçildiyse */
-input[type="radio"]:checked + label {
+input[type="radio"]:checked + label.radio {
   background-color: #ffeecc;
   color: rgba(0, 0, 0, 0.8);
+}
+
+/* Checkbox'ları gizle */
+input[type="checkbox"] {
+  display: none;
+}
+
+/* Checkbox label için özel stil */
+label.checkbox::before {
+  content: "✔"; /* Tik işareti */
+  display: inline-block;
+  width: 45px;
+  height: 45px;
+  margin-right: 10px;
+  padding: 2px;
+  border: 2px solid #fdc913;
+  border-radius: 3px;
+  background-color: #faf7f2; /* İşaretli değilken arka plan rengi */
+  color: transparent; /* Renk başta görünmesin */
+  text-align: center;
+  line-height: 45px; /* Kutu yüksekliği ile aynı */
+  font-size: 24px; /* Tik işaretinin boyutu */
+}
+
+/* Checkbox seçildiğinde tik işaretini göster */
+input[type="checkbox"]:checked + label.checkbox::before {
+  color: black; /* Tik işaretinin rengi */
+  background-color: #fdc913; /* Seçildiğinde arka plan rengi */
+  border-color: #fdc913; /* Kenarlık rengini de değiştirebilirsin */
+}
+
+/* Label'a hover efekti */
+label.checkbox:hover::before {
+  border-color: gray;
+}
+.siparis-notu {
+  width: 531px;
+  margin: 0 auto; /* Sayfanın ortasında yer alması için */
+}
+
+.siparis-notu Form {
+  display: flex;
+  flex-direction: column; /* Label ve input'u dikey hizalamak için */
+}
+
+.siparis-notu Label {
+  font-weight: bold; /* Label'ı kalın yapmak için */
+  margin-bottom: 0.5rem; /* Label ile input arasına boşluk eklemek için */
+}
+
+#siparis-notu-input {
+  width: 100%; /* Genişlik ayarı input alanının tamamını kaplaması için */
+  height: 56px;
+  background: #faf7f2;
+  min-height: 100px; /* Minimum yükseklik ayarı */
+  resize: none; /* Kullanıcının input alanını büyütmesini ve küçültmesini engellemek için */
+  box-sizing: border-box; /* İçerik, padding ve border ile birlikte genişliği hesaplamak için */
+  padding: 0.5rem; /* İçerik ile kenar arasına boşluk eklemek için */
+  text-align: left; /* İçeriği sola hizalamak için */
+  line-height: 1.5; /* Satır yüksekliği ayarı */
+  overflow: hidden; /* İçeriğin taşmasını engellemek için */
+  display: flex; /* Flexbox ile dikey hizalama */
+  align-items: center; /* İçeriği dikeyde ortalamak için */
+  font-family: inherit; /* Varsayılan yazı tipi ailesini korumak için */
+}
+.siparis-notu {
+  margin-bottom: 2rem; /* Alanın altına 2rem boşluk ekler */
+  position: relative; /* Kenarlık çizgisi için konumlama ayarları */
+}
+
+.siparis-notu::after {
+  content: ""; /* Kenarlık çizgisi için içerik oluşturur */
+  display: block; /* Blok öğe olarak gösterir */
+  width: 100%; /* Kenarlığın genişliği, üst öğenin genişliği kadar olur */
+  border-bottom: 2px solid #cbcac7; /* Kenarlık rengi ve kalınlığı */
+  position: absolute; /* Konumlama */
+  bottom: -2rem; /* Kenarlığı, öğenin altına 2rem uzaklıkta yerleştirir */
+  left: 0; /* Sol hizalama */
 }

@@ -1,155 +1,160 @@
+import { useState } from "react";
 import FoodCard from "../components/foodCard/foodCard";
 import Header from "../components/header/Header";
 import "./OrderPizza.css";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 
 function OrderPizza() {
+  const [secilenBoyut, setSecilenBoyut] = useState("");
+  const [secilenKalinlik, setSecilenKalinlik] = useState("");
+  const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
+
+  const handleBoyutChange = (event) => {
+    setSecilenBoyut(event.target.value);
+  };
+
+  const handleKalinlikChange = (event) => {
+    setSecilenKalinlik(event.target.value);
+  };
+
+  const handleMalzemeChange = (event) => {
+    const malzeme = event.target.value;
+    const isChecked = event.target.checked;
+
+    if (isChecked && secilenMalzemeler.length < 10) {
+      setSecilenMalzemeler([...secilenMalzemeler, malzeme]);
+    } else if (!isChecked) {
+      setSecilenMalzemeler(
+        secilenMalzemeler.filter((item) => item !== malzeme)
+      );
+    }
+  };
+
   return (
     <div>
       <Header />
       <FoodCard />
       <div className='food-size-container'>
-        <p>
-          Boyut Seç <span style={{ color: "red" }}>*</span>
-        </p>
-        <Form className='food-size'>
-          <FormGroup check inline>
-            <Input type='radio' id='radio-s' name='size' />
-            <Label check for='radio-s'>
-              S
-            </Label>
-          </FormGroup>
+        <div className='size-dough-container'>
+          <div className='size-selection'>
+            <p>
+              Boyut Seç <span style={{ color: "red" }}>*</span>
+            </p>
+            <Form className='food-size'>
+              <FormGroup check inline>
+                <Input
+                  type='radio'
+                  id='radio-s'
+                  name='size'
+                  value='S'
+                  onChange={handleBoyutChange}
+                />
+                <Label className='radio' for='radio-s'>
+                  S
+                </Label>
+              </FormGroup>
 
-          <FormGroup check inline>
-            <Input type='radio' id='radio-m' name='size' />
-            <Label check for='radio-m'>
-              M
-            </Label>
-          </FormGroup>
+              <FormGroup check inline>
+                <Input
+                  type='radio'
+                  id='radio-m'
+                  name='size'
+                  value='M'
+                  onChange={handleBoyutChange}
+                />
+                <Label className='radio' for='radio-m'>
+                  M
+                </Label>
+              </FormGroup>
 
-          <FormGroup check inline>
-            <Input type='radio' id='radio-l' name='size' />
-            <Label check for='radio-l'>
-              L
-            </Label>
-          </FormGroup>
-        </Form>
-        <p>
-          Hamur Seç <span style={{ color: "red" }}>*</span>
-        </p>
-        <Form>
-          <FormGroup>
-            <Input
-              type='select'
-              id='hamur-kal'
-              placeholder='--Hamur Kalınlığı Seçin--'
-            >
-              <option value=''>--Hamur Kalınlığı Seçin--</option>
-              <option value='ince'>İnce</option>
-              <option value='orta'>Orta</option>
-              <option value='kalin'>Kalın</option>
-            </Input>
-          </FormGroup>
-        </Form>
-        <Form>
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox1' />
-            <Label for='checkbox1' check>
-              Seçenek 1
-            </Label>
-          </FormGroup>
+              <FormGroup check inline>
+                <Input
+                  type='radio'
+                  id='radio-l'
+                  name='size'
+                  value='L'
+                  onChange={handleBoyutChange}
+                />
+                <Label className='radio' for='radio-l'>
+                  L
+                </Label>
+              </FormGroup>
+            </Form>
+          </div>
 
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox2' />
-            <Label for='checkbox2' check>
-              Seçenek 2
-            </Label>
-          </FormGroup>
+          <div className='dough-selection'>
+            <p>
+              Hamur Seç <span style={{ color: "red" }}>*</span>
+            </p>
+            <Form>
+              <FormGroup>
+                <Input
+                  type='select'
+                  id='hamur-kal'
+                  placeholder='--Hamur Kalınlığı Seçin--'
+                  onChange={handleKalinlikChange}
+                >
+                  <option value=''>--Hamur Kalınlığı Seçin--</option>
+                  <option value='ince'>İnce</option>
+                  <option value='orta'>Orta</option>
+                  <option value='kalin'>Kalın</option>
+                </Input>
+              </FormGroup>
+            </Form>
+          </div>
+        </div>
 
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox3' />
-            <Label for='checkbox3' check>
-              Seçenek 3
-            </Label>
-          </FormGroup>
+        <div>
+          <Form className='checkbox-container'>
+            <p>
+              <span style={{ fontWeight: "bold" }}>Ek Malzemeler</span>
+            </p>
+            <p>En Fazla 10 malzeme seç</p>
 
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox4' />
-            <Label for='checkbox4' check>
-              Seçenek 4
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox5' />
-            <Label for='checkbox5' check>
-              Seçenek 5
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox6' />
-            <Label for='checkbox6' check>
-              Seçenek 6
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox7' />
-            <Label for='checkbox7' check>
-              Seçenek 7
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox8' />
-            <Label for='checkbox8' check>
-              Seçenek 8
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox9' />
-            <Label for='checkbox9' check>
-              Seçenek 9
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox10' />
-            <Label for='checkbox10' check>
-              Seçenek 10
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox11' />
-            <Label for='checkbox11' check>
-              Seçenek 11
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox12' />
-            <Label for='checkbox12' check>
-              Seçenek 12
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox13' />
-            <Label for='checkbox13' check>
-              Seçenek 13
-            </Label>
-          </FormGroup>
-
-          <FormGroup check>
-            <Input type='checkbox' id='checkbox14' />
-            <Label for='checkbox14' check>
-              Seçenek 14
-            </Label>
-          </FormGroup>
-        </Form>
+            {[
+              "Pepperoni",
+              "Tavuk Izgara",
+              "Mısır",
+              "Sarımsak",
+              "Ananas",
+              "Sosis",
+              "Soğan",
+              "Sucuk",
+              "Biber",
+              "Kabak",
+              "Kanada Jambonu",
+              "Domates",
+              "Jalepeno",
+              "Sucuk",
+            ].map((malzeme, index) => (
+              <FormGroup check key={index}>
+                <Input
+                  type='checkbox'
+                  id={`checkbox${index + 1}`}
+                  value={malzeme}
+                  onChange={handleMalzemeChange}
+                  disabled={
+                    !secilenMalzemeler.includes(malzeme) &&
+                    secilenMalzemeler.length >= 10
+                  }
+                />
+                <Label className='checkbox' for={`checkbox${index + 1}`}>
+                  {malzeme}
+                </Label>
+              </FormGroup>
+            ))}
+          </Form>
+          <div className='siparis-notu'>
+            <Form>
+              <Label for='siparis-notu-input'>Sipariş Notu</Label>
+              <Input
+                id='siparis-notu-input'
+                type='textarea'
+                placeholder='Siparişinize eklemek istediğiniz bir not var mı?'
+              />
+            </Form>
+          </div>
+        </div>
       </div>
     </div>
   );
