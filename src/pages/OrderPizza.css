@@ -1,0 +1,39 @@
+.food-size-container {
+  margin-top: 7rem;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+.food-size {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Radio button görünümünü gizle */
+input[type="radio"] {
+  display: none;
+}
+
+/* Label görünümü */
+label {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #faf7f2;
+  text-align: center;
+  line-height: 30px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Radio button seçildiyse */
+input[type="radio"]:checked + label {
+  background-color: #ffeecc;
+  color: rgba(0, 0, 0, 0.8);
+}

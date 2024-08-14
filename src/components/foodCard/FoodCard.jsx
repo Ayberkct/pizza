@@ -1,4 +1,3 @@
-import { Form, FormGroup, Input, Label } from "reactstrap";
 import "./foodCard.css";
 
 function FoodCard() {
@@ -28,33 +27,6 @@ function FoodCard() {
               pizzetta denir.
             </p>
           </div>
-        </div>
-        <div className='food-size-container'>
-          <p>
-            Boyut Seç <span style={{ color: "red" }}>*</span>
-          </p>
-          <Form className='food-size'>
-            <FormGroup check inline>
-              <Input type='radio' id='radio-s' name='size' />
-              <Label check for='radio-s'>
-                S
-              </Label>
-            </FormGroup>
-
-            <FormGroup check inline>
-              <Input type='radio' id='radio-m' name='size' />
-              <Label check for='radio-m'>
-                M
-              </Label>
-            </FormGroup>
-
-            <FormGroup check inline>
-              <Input type='radio' id='radio-l' name='size' />
-              <Label check for='radio-l'>
-                L
-              </Label>
-            </FormGroup>
-          </Form>
         </div>
       </div>
     </div>
