@@ -136,3 +136,14 @@ label.checkbox:hover::before {
   bottom: -2rem; /* Kenarlığı, öğenin altına 2rem uzaklıkta yerleştirir */
   left: 0; /* Sol hizalama */
 }
+.checkbox-container {
+  display: flex;
+  width: 532px;
+  flex-wrap: wrap;
+  gap: 1rem; /* Aralarındaki boşluk */
+}
+
+.checkbox-container .form-group {
+  flex: 1 1 30%; /* Her bir öğe için yaklaşık %30 genişlik */
+  max-width: 30%; /* Maksimum genişlik %30 */
+}
