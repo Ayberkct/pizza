@@ -1,17 +1,24 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useHistory } from "react-router-dom"; // useHistory'i ekleyin
 import FoodCard from "../components/foodCard/foodCard";
 import Header from "../components/header/Header";
+import Footer from "../components/footer/footer";
 import "./OrderPizza.css";
 import { Form, FormGroup, Input, Label } from "reactstrap";
 
-function OrderPizza() {
-  const [secilenBoyut, setSecilenBoyut] = useState("");
-  const [secilenKalinlik, setSecilenKalinlik] = useState("");
-  const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
-  const [toplamFiyat, setToplamFiyat] = useState(0);
-  const [adet, setAdet] = useState(1);
-  const history = useHistory(); // useHistory hook'unu kullanın
+function OrderPizza(props) {
+  const {
+    setSecilenBoyut,
+    setSecilenKalinlik,
+    secilenMalzemeler,
+    setSecilenMalzemeler,
+    toplamFiyat,
+    setToplamFiyat,
+    adet,
+    setAdet,
+    pizzaIcerik,
+  } = props;
+  const history = useHistory();
 
   useEffect(() => {
     const malzemeFiyati = secilenMalzemeler.length * 5 * adet;
@@ -48,7 +55,7 @@ function OrderPizza() {
   return (
     <div>
       <Header />
-      <FoodCard />
+      <FoodCard pizzaIcerik={pizzaIcerik} />
       <div className='food-size-container'>
         <div className='size-dough-container'>
           <div className='size-selection'>
@@ -196,6 +203,7 @@ function OrderPizza() {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
