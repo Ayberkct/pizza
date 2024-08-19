@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom"; // useHistory'i ekleyin
 import FoodCard from "../components/foodCard/foodCard";
 import Header from "../components/header/Header";
 import "./OrderPizza.css";
@@ -8,6 +9,15 @@ function OrderPizza() {
   const [secilenBoyut, setSecilenBoyut] = useState("");
   const [secilenKalinlik, setSecilenKalinlik] = useState("");
   const [secilenMalzemeler, setSecilenMalzemeler] = useState([]);
+  const [toplamFiyat, setToplamFiyat] = useState(0);
+  const [adet, setAdet] = useState(1);
+  const history = useHistory(); // useHistory hook'unu kullanın
+
+  useEffect(() => {
+    const malzemeFiyati = secilenMalzemeler.length * 5 * adet;
+    const yeniToplam = malzemeFiyati;
+    setToplamFiyat(yeniToplam);
+  }, [secilenMalzemeler, adet]);
 
   const handleBoyutChange = (event) => {
     setSecilenBoyut(event.target.value);
@@ -28,6 +38,11 @@ function OrderPizza() {
         secilenMalzemeler.filter((item) => item !== malzeme)
       );
     }
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    history.push("./success");
   };
 
   return (
@@ -153,6 +168,31 @@ function OrderPizza() {
                 placeholder='Siparişinize eklemek istediğiniz bir not var mı?'
               />
             </Form>
+          </div>
+        </div>
+      </div>
+      <div className='fiyat-hesaplama'>
+        <div className='adet-kontrol'>
+          <div
+            className='azalt-buton'
+            onClick={() => setAdet(adet > 1 ? adet - 1 : 1)}
+          >
+            -
+          </div>
+          <span className='adet'>{adet}</span>
+          <div className='arttir-buton' onClick={() => setAdet(adet + 1)}>
+            +
+          </div>
+        </div>
+        <div className='siparis-toplami'>
+          <h3>Sipariş Toplamı</h3>
+          <div className='secimler'>
+            <p>Seçimler {toplamFiyat} ₺</p>
+          </div>
+          <p className='toplam-fiyat'>Toplam Fiyat: {toplamFiyat} ₺</p>
+          <div className='siparis-ver-buton' onClick={handleSubmit}>
+            {" "}
+            SİPARİŞ VER{" "}
           </div>
         </div>
       </div>

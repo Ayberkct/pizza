@@ -134,3 +134,83 @@ label.checkbox:hover::before {
   flex: 1 1 30%;
   max-width: 30%;
 }
+.fiyat-hesaplama {
+  display: flex;
+  flex-direction: row;
+  max-width: 532px;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  background-color: #faf7f2;
+
+  border-radius: 8px;
+  margin-left: 490px;
+}
+
+.siparis-toplami {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #faf7f2;
+  padding: 10px;
+  border: 1px solid black;
+  max-width: 532px;
+  width: 100%;
+}
+
+.adet-kontrol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.azalt-buton,
+.arttir-buton {
+  width: 40px;
+  height: 40px;
+  font-size: 24px;
+  background-color: #fdc913;
+  color: #333;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.adet {
+  border: 1px solid black;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.secimler {
+  margin-bottom: 10px;
+}
+
+.toplam-fiyat {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.siparis-ver-buton {
+  background-color: #fdc913;
+  width: 100%;
+  color: black;
+  padding: 10px 20px;
+  font-size: 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: inline-block;
+  text-align: center;
+}
