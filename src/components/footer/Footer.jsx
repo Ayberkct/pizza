@@ -4,15 +4,15 @@ const FooterBody = styled.footer`
   background: black;
   width: 100%;
   display: flex;
-  justify-content: center; /* Ortalamak için */
+  justify-content: center;
   padding: 20px;
-  border-bottom: 2px solid white; /* Üst border */
-  position: relative; /* Alt yazı için gerekli */
+  border-bottom: 2px solid white;
+  position: relative;
 `;
 
 const MenuSection = styled.div`
   color: white;
-  max-width: 1066px; /* Maksimum genişlik */
+  max-width: 1066px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,10 +44,10 @@ const MenuSection = styled.div`
   .instagram-images {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Ortalamak için */
+    justify-content: center;
     gap: 10px;
-    width: 347px; /* Instagram alan genişliği */
-    margin: 0 auto; /* Ortalamak için */
+    width: 347px;
+    margin: 0 auto;
 
     img {
       width: 100px;
