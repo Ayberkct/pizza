@@ -3,7 +3,11 @@ import "./header.css";
 function Header() {
   return (
     <div className='header-container'>
-      <p className='header-baslik'>Teknolojik Yemekler</p>
+      <img
+        className='header-baslik'
+        src='..//Assets/Iteration-2-aseets/footer/logo-footer.svg'
+        alt=''
+      />
     </div>
   );
 }

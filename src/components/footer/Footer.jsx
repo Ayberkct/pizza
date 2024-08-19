@@ -1,5 +1,10 @@
 import styled from "styled-components";
 
+const FooterContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
 const FooterBody = styled.footer`
   background: black;
   width: 100%;
@@ -7,12 +12,11 @@ const FooterBody = styled.footer`
   justify-content: center;
   padding: 20px;
   border-bottom: 2px solid white;
-  position: relative;
 `;
 
 const MenuSection = styled.div`
   color: white;
-  max-width: 1066px;
+  max-width: 1092px;
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -44,9 +48,9 @@ const MenuSection = styled.div`
   .instagram-images {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 10px;
-    width: 347px;
+    width: 100%;
+    max-width: 347px;
     margin: 0 auto;
 
     img {
@@ -60,16 +64,28 @@ const MenuSection = styled.div`
 const FooterText = styled.div`
   background: black;
   color: white;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  i {
+    color: white;
+    font-size: 24px; /* Adjust icon size */
+  }
 `;
 
 const Footer = () => {
   return (
-    <>
+    <FooterContainer>
       <FooterBody>
         <MenuSection>
           <div>
-            <h2>TEKNOLOJİK</h2>
-            <h2>YEMEKLER</h2>
+            <img
+              src='..//Assets/Iteration-2-aseets/footer/logo-footer.svg'
+              alt=''
+            />
             <div className='info-item'>
               <img
                 src='https://github.com/Ayberkct/pizza/blob/main/Assets/Iteration-2-aseets/footer/icons/icon-1.png?raw=true'
@@ -135,10 +151,10 @@ const Footer = () => {
         </MenuSection>
       </FooterBody>
       <FooterText>
-        <p>2023</p>
-        <FontAwesomeIcon icon='fa-brands fa-twitter' />
+        <span>2023</span>
+        <i className='fa-brands fa-square-twitter'></i>
       </FooterText>
-    </>
+    </FooterContainer>
   );
 };
 
